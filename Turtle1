@@ -5,31 +5,50 @@ def setup(col, x, y, w, s, shape):
     turtle.goto(x,y)
     turtle.width(s)
     turtle.turtlesize(s)
-    #bgpic("https://d13yacurqjgara.cloudfront.net/users/375867/screenshots/1480136/game-assets-game-background-sidescroller.png")
-    #bgpic("background.png")
-    wn.bgcolor("blue")
+    #turtle.bgpic("https://d13yacurqjgara.cloudfront.net/users/375867/screenshots/1480136/game-assets-game-background-sidescroller.png")
+    turtle.bgpic("background.png")
+    #wn.bgcolor("blue")
     turtle.color(col)
     turtle.shape(shape)
     #turtle.down()
     wn.onkeypress(up, "Up")
     wn.onkeypress(left, "Left")
+    wn.onkey(lefft, "Left")
     wn.onkeypress(right, "Right")
     wn.onkeypress(back, "Down")
     wn.onkey(quitTurtles, "Escape")
     wn.listen()
     wn.mainloop()
- 
+    wn.Screen.setworldcoordinates(-50,-7.5,50,7.5)
+    wn.Screensize(-300,-300)
+    
+
+print(turtle.pos())
+
+leftcount=1
+def lefting():
+    global leftcount
+    while leftcount==1:
+        turtle.lt(180)
+        leftcount=2
+leftcount=1
+#if wn.onkeyrelease(left, "Left"):
+    #leftcount=1
 
 #Event handlers
 def up():
     #turtle.pendown()
-    turtle.fd(20)
+    turtle.fd(1)
     #turtle.penup()
 def left():
-    turtle.lt(180)
-    #turtle.fd(50)
+    leftcount=1
+    lefting()
+    leftcount=1
+    turtle.fd(50)
+def lefft():
+    leftcount=1
 def right():
-    turtle.rt(180)
+    turtle.rt(90)
     #turtle.fd(50)
 def back():
     turtle.bk(30)
@@ -37,4 +56,4 @@ def back():
 def quitTurtles():
     wn.bye()
 
-setup("green",-100,150,2,2,"turtle")
+setup("brown",-100,150,2,2,"classic")
